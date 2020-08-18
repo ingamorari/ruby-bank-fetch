@@ -18,6 +18,7 @@ module Fetch
       tr.click
       accounts.push(Account::new(b).return)
       b.back
+      b.back
     end
     tempHash[:accounts] = accounts
     f.write(JSON.pretty_generate(tempHash))
