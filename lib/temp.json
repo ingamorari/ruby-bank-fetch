@@ -1,0 +1,31 @@
+{
+  "accounts": [
+    {
+      "name": "40817810200000055320",
+      "currency": "Российский рубль",
+      "balance": "1 000 000.00 ₽",
+      "nature": "Счёт RUB",
+      "transactions": [
+
+      ]
+    },
+    {
+      "name": "40817840400000055321",
+      "currency": "Доллар США",
+      "balance": "100 000.00 $",
+      "nature": "Счёт USD",
+      "transactions": [
+
+      ]
+    },
+    {
+      "name": "40817978300000055322",
+      "currency": "Евро",
+      "balance": "100 000.00 €",
+      "nature": "Счёт EUR",
+      "transactions": [
+
+      ]
+    }
+  ]
+}
