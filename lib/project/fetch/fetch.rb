@@ -1,8 +1,8 @@
-require "project/version"
-require 'watir'
-require 'selenium-webdriver'
-require 'json'
-require 'fetch/accounts/account'
+require_relative "../../project"
+require "watir"
+require "selenium-webdriver"
+require "json"
+require_relative "./accounts/account"
 
 module Fetch
   caps = Selenium::WebDriver::Remote::Capabilities.chrome(:chromeOptions => {detach: true })
@@ -14,7 +14,7 @@ module Fetch
     tempHash = {
         accounts: []
     }
-    b.table(id: 'contracts-list').rows('data-guid': 'aclUZJSYY3GD5EZJGWTH7FYXRK2PI').each do |tr|
+    b.table(id: "contracts-list").rows('data-guid': "aclUZJSYY3GD5EZJGWTH7FYXRK2PI").each do |tr|
       tr.click
       accounts.push(Account::new(b).return)
       b.back
