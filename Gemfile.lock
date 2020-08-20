@@ -10,7 +10,6 @@ GEM
     childprocess (3.0.0)
     diff-lcs (1.4.4)
     ffi (1.13.1-x64-mingw32)
-    nokogiri (1.11.0.rc2-x64-mingw32)
     parallel (1.19.2)
     parser (2.7.1.4)
       ast (~> 2.4.1)
@@ -57,7 +56,6 @@ PLATFORMS
 
 DEPENDENCIES
   ffi (~> 1.13.1)
-  nokogiri (~> 1.11.0.rc2)
   project!
   rake (~> 13.0)
   rspec (~> 3.0)
