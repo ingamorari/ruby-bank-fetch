@@ -11,10 +11,11 @@ class Transaction
 
   def to_hash
     {
-        date: @date,
-      description: @description,
-      amount: @amount,
-      commission: @commission,
+        processingDate: Date.parse(@processingDate).strftime('%d-%m-%Y'),
+        date: Date.parse(@date).strftime('%d-%m-%Y'),
+        description: @description,
+        amount: @amount.to_s.split(' ').join('').to_f,
+        commission: @commission.to_s.split(' ').join('').to_f,
     }
   end
 end

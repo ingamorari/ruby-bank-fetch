@@ -25,7 +25,7 @@ class Account
     {
         name: @name,
         currency: @currency,
-        balance: @balance,
+        balance: @balance.to_s.split(' ').join('').to_f,
         nature: @nature,
         transactions: @transactions,
     }
