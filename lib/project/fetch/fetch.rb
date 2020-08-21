@@ -6,22 +6,22 @@ require_relative "./accounts/account"
 
 module Fetch
   caps = Selenium::WebDriver::Remote::Capabilities.chrome(:chromeOptions => {detach: true })
-  b = Watir::Browser.new(:chrome, desired_capabilities: caps)
-  b.goto("https://demo.bank-on-line.ru/?registered=demo#Contracts")
+  browser = Watir::Browser.new(:chrome, desired_capabilities: caps)
+  browser.goto("https://demo.bank-on-line.ru/?registered=demo#Contracts")
 
-  File.open("./temp.json","w") do |f|
+  File.open("./temp.json", "w") do |f|
     accounts = []
     tempHash = {
-        accounts: []
+      accounts: []
     }
-    b.table(id: "contracts-list").rows('data-guid': "aclUZJSYY3GD5EZJGWTH7FYXRK2PI").each do |tr|
+    browser.table(id: "contracts-list").rows(class: "cp-item").each do |tr|
       tr.click
-      accounts.push(Account::new(b).return)
-      b.back
-      b.back
+      accounts.push(Account::new(browser).to_hash)
+      browser.back
+      browser.back
     end
     tempHash[:accounts] = accounts
     f.write(JSON.pretty_generate(tempHash))
   end
-  b.close
+  browser.close
 end
