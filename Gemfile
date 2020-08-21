@@ -16,3 +16,5 @@ gem "watir", "~> 6.16.5"
 gem "ffi", "~> 1.13.1"
 
 gem 'selenium-webdriver', '~> 3.142', '>= 3.142.7'
+
+gem 'nokogiri', '~> 1.11.0.rc2'

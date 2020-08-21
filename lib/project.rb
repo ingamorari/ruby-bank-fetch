@@ -1,5 +1,7 @@
-require_relative "./project/fetch/fetch"
+require_relative "./project/fetch/fetch.rb"
+
 module Project
-  class Error < StandardError;
+  Fetch.new
+  class Error < StandardError
   end
 end
