@@ -47,27 +47,27 @@ class Fetch
   end
 
   def parse_account(html)
-    parsed_account_table = Nokogiri::HTML.fragment(html)
+    parsed_account_table = Nokogiri::HTML.fragment(html, "UTF-8")
     table_rows = parsed_account_table.css("tr")
     {
-        name: table_rows[0].css('.caption-hint').text.to_i,
-        currency: table_rows[1].css('.tdFieldVal').text.split(' ')[1],
-        balance: table_rows[5].css('.tdFieldVal').text.to_s.split(' ').join('').to_f,
-        created_at: Date.parse(table_rows[3].css('.tdFieldVal').text).strftime('%Y-%m-%d'),
+        name: table_rows[0].css(".caption-hint").text.to_i,
+        currency: table_rows[1].css(".tdFieldVal").text.split(" ")[1],
+        balance: table_rows[5].css(".tdFieldVal").text.to_s.split(" ").join("").to_f,
+        created_at: Date.parse(table_rows[3].css(".tdFieldVal").text).strftime("%Y-%m-%d"),
         transactions: []
     }
   end
 
   def parse_transactions(html)
-    parsed_transactions_table = Nokogiri::HTML.fragment(html)
+    parsed_transactions_table = Nokogiri::HTML.fragment(html, "UTF-8")
     transactions = []
-    parsed_transactions_table.css('tr.cp-item.cp-transaction').each do |tr|
+    parsed_transactions_table.css("tr.cp-item.cp-transaction").each do |tr|
       transactions.push({
-                            date: Date.parse(tr.css('.cp-time > text()').text).strftime('%Y-%m-%d'),
-                            processingDate: Date.parse(tr.css('.td-action.with-hover.text-center.cp-export').text).strftime('%Y-%m-%d'),
-                            description: tr.css('.TranDescription').text,
-                            amount: tr.css('.tranListMoney')[1].text.to_s.split(' ').join('').to_f,
-                            commission: tr.css('.tranListFee').to_s.split(' ').join('').to_f,
+                            date: Date.parse(tr.css(".cp-time > text()").text).strftime("%Y-%m-%d"),
+                            processingDate: Date.parse(tr.css(".td-action.with-hover.text-center.cp-export").text).strftime("%Y-%m-%d"),
+                            description: tr.css(".TranDescription").text,
+                            amount: tr.css(".tranListMoney")[1].text.to_s.split(" ").join("").to_f,
+                            commission: tr.css(".tranListFee").to_s.split(" ").join("").to_f,
                         })
 
     end
